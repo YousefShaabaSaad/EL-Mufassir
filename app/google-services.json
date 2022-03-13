@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "329147330480",
+    "project_id": "el-mufassir",
+    "storage_bucket": "el-mufassir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329147330480:android:0baabcc9a97d8e3a28b075",
+        "android_client_info": {
+          "package_name": "com.yousef.el_mufassir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329147330480-lp1g1qe2ft83tdljber3epmq1700hfgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6b-QMMfU_Yu7x9H45TwP0GFjr_zdRJT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329147330480-lp1g1qe2ft83tdljber3epmq1700hfgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
