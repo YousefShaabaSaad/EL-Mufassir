@@ -1,3 +1,598 @@
 <resources>
-    <string name="app_name">EL-Mufassir</string>
+    <string name="appName">المُفَسِّر</string>
+    <string name="appName2">آسم التطبيق : المُفَسِّر</string>
+    <string name="appName3"> #تطبيق_المُفَسِّر ♥</string>
+    <string name="chooseSoura">إختار آسم السورة</string>
+    <string name="chooseAya">الآية رقم </string>
+    <string name="editAya">تم تعديل الآية رقم</string>
+    <string name="noAyat">إختار السورة أولا !</string>
+    <string name="writeTafseer">أكتب التفسير هنا</string>
+    <string name="writeAya">أكتب الآية هنا</string>
+    <string name="noPermission">لا يوجد إذن للوصول للمعرض</string>
+    <string name="noPermissionCall">لا يوجد إذن للإتصال </string>
+    <string name="noOpenSoura">لا يمكنك فتح سورة </string>
+    <string name="noOpenAya">لا يمكنك فتح الآية رقم </string>
+    <string name="fail">فشل تحميل الصورة</string>
+    <string name="success">تم تحميل الصورة بنجاح</string>
+    <string name="fail1">فشل تحميل التفسير !</string>
+    <string name="noImage">من فضلك إختار الصورة</string>
+    <string name="notComplete">من فضلك أكتب التفسير</string>
+    <string name="upload">رفع التفسير</string>
+    <string name="uploadTafseer">جاري رفع تفسير سورة </string>
+    <string name="finish">لقد إنتهيت</string>
+    <string name="about">حول</string>
+    <string name="downloadAss3diy">تحميل التفسير المختصر</string>
+    <string name="downloadAss3diy2">التفسير المختصر</string>
+    <string name="downloadAss3diy3">جاري تحميل التفسير المختصر</string>
+    <string name="companyName">شركة : مِتبُوي</string>
+    <string name="companyName2">مِتبُوي</string>
+    <string name="myName"> آسم المبرمج : يوسف شعبان</string>
+    <string name="whatsapp">مجموعة الواتساب</string>
+    <string name="from">من شركة</string>
+    <string name="block">أنت محظور لإرتكابك بعض الأخطاء</string>
+    <string name="downloadAya">تحميل صورة الآية</string>
+    <string name="copyAya">نسخ نص الآية</string>
+    <string name="downloadTafseer">تحميل صورة التفسير</string>
+    <string name="copyTafseer">نسخ نص التفسير</string>
+    <string name="successCopy">تم نسخ النص بنجاح</string>
+    <string name="successDownload">تم تنزيل الصورة بنجاح</string>
+    <string name="failDownload">فشل تنزيل الصورة</string>
+    <string name="canRead">يمكنك قراءة تفسير الآية رقم </string>
+    <string name="fromSoura">"من سورة "</string>
+    <string name="soura">"سورة"</string>
+    <string name="tafseerSoura">"تفسير سورة"</string>
+    <string name="aya">"آية"</string>
+    <string name="editTafseer">تعديل التفسير</string>
+    <string name="chat">تواصل معنا</string>
+    <string name="lock">الآيات المغلقة</string>
+    <string name="more">علامة</string>
+    <string name="callMe">إتصل بي</string>
+    <string name="numberOfAya">عدد الآيات :</string>
+    <string name="settings">الإعدادات</string>
+    <string name="search">بحث</string>
+    <string name="palestine">لا تنسوا إخوانكم في فلسطين الحبيبة</string>
+
+    <string-array name="Fragments">
+        <item>المُفَسِّر</item>
+        <item>الأذكار</item>
+    </string-array>
+
+    <string-array name="Quran">
+        <item>الفاتحة</item>
+        <item>البقرة</item>
+        <item>آل عمران</item>
+        <item>النساء</item>
+        <item>المائدة</item>
+        <item>الأنعام</item>
+        <item>الأعراف</item>
+        <item>الأنفال</item>
+        <item>التوبة</item>
+        <item>يونس</item>
+        <item>هود</item>
+        <item>يوسف</item>
+        <item>الرعد</item>
+        <item>إبراهيم</item>
+        <item>الحجر</item>
+        <item>النحل</item>
+        <item>الإسراء</item>
+        <item>الكهف</item>
+        <item>مريم</item>
+        <item>طه</item>
+        <item>الأنبياء</item>
+        <item>الحج</item>
+        <item>المؤمنون</item>
+        <item>النور</item>
+        <item>الفرقان</item>
+        <item>الشعراء</item>
+        <item>النمل</item>
+        <item>القصص</item>
+        <item>العنكبوت</item>
+        <item>الروم</item>
+        <item>لقمان</item>
+        <item>السجدة</item>
+        <item>الأحزاب</item>
+        <item>سبإ</item>
+        <item>فاطر</item>
+        <item>يس</item>
+        <item>الصافات</item>
+        <item>ص</item>
+        <item>الزمر</item>
+        <item>غافر</item>
+        <item>فصِّلت</item>
+        <item>الشورى</item>
+        <item>الزخرف</item>
+        <item>الدخان</item>
+        <item>الجاثية</item>
+        <item>الأحقاف</item>
+        <item>محمد</item>
+        <item>الفتح</item>
+        <item>الحجرات</item>
+        <item>ق</item>
+        <item>الذاريات</item>
+        <item>الطور</item>
+        <item>النجم</item>
+        <item>القمر</item>
+        <item>الرحمن</item>
+        <item>الواقعة</item>
+        <item>الحديد</item>
+        <item>المجادلة</item>
+        <item>الحشر</item>
+        <item>الممتحنة</item>
+        <item>الصف</item>
+        <item>الجمعة</item>
+        <item>المنافقون</item>
+        <item>التغابن</item>
+        <item>الطلاق</item>
+        <item>التحريم</item>
+        <item>الملك</item>
+        <item>القلم</item>
+        <item>الحاقة</item>
+        <item>المعارج</item>
+        <item>نوح</item>
+        <item>الجن</item>
+        <item>المزمل</item>
+        <item>المدثر</item>
+        <item>القيامة</item>
+        <item>الإنسان</item>
+        <item>المرسلات</item>
+        <item>النبإ</item>
+        <item>النازعات</item>
+        <item>عبس</item>
+        <item>التكوير</item>
+        <item>الانفطار</item>
+        <item>المطففين</item>
+        <item>الانشقاق</item>
+        <item>البروج</item>
+        <item>الطارق</item>
+        <item>الأعلى</item>
+        <item>الغاشية</item>
+        <item>الفجر</item>
+        <item>البلد</item>
+        <item>الشمس</item>
+        <item>الليل</item>
+        <item>الضحى</item>
+        <item>الشرح</item>
+        <item>التين</item>
+        <item>العلق</item>
+        <item>القدر</item>
+        <item>البينة</item>
+        <item>الزلزلة</item>
+        <item>العاديات</item>
+        <item>القارعة</item>
+        <item>التكاثر</item>
+        <item>العصر</item>
+        <item>الهمزة</item>
+        <item>الفيل</item>
+        <item>قريش</item>
+        <item>الماعون</item>
+        <item>الكوثر</item>
+        <item>الكافرون</item>
+        <item>النصر</item>
+        <item>المسد</item>
+        <item>الإخلاص</item>
+        <item>الفلق</item>
+        <item>الناس</item>
+    </string-array>
+
+    <string-array name="Numbers">
+        <item>7</item>
+        <item>286</item>
+        <item>200</item>
+        <item>176</item>
+        <item>120</item>
+        <item>165</item>
+        <item>206</item>
+        <item>75</item>
+        <item>129</item>
+        <item>109</item>
+        <item>123</item>
+        <item>111</item>
+        <item>43</item>
+        <item>52</item>
+        <item>99</item>
+        <item>128</item>
+        <item>111</item>
+        <item>110</item>
+        <item>98</item>
+        <item>135</item>
+        <item>112</item>
+        <item>78</item>
+        <item>118</item>
+        <item>64</item>
+        <item>77</item>
+        <item>227</item>
+        <item>93</item>
+        <item>88</item>
+        <item>69</item>
+        <item>60</item>
+        <item>34</item>
+        <item>30</item>
+        <item>73</item>
+        <item>54</item>
+        <item>45</item>
+        <item>83</item>
+        <item>182</item>
+        <item>88</item>
+        <item>75</item>
+        <item>85</item>
+        <item>54</item>
+        <item>53</item>
+        <item>89</item>
+        <item>59</item>
+        <item>37</item>
+        <item>35</item>
+        <item>38</item>
+        <item>29</item>
+        <item>18</item>
+        <item>45</item>
+        <item>60</item>
+        <item>49</item>
+        <item>62</item>
+        <item>55</item>
+        <item>78</item>
+        <item>96</item>
+        <item>29</item>
+        <item>22</item>
+        <item>24</item>
+        <item>13</item>
+        <item>14</item>
+        <item>11</item>
+        <item>11</item>
+        <item>18</item>
+        <item>12</item>
+        <item>12</item>
+        <item>30</item>
+        <item>52</item>
+        <item>52</item>
+        <item>44</item>
+        <item>28</item>
+        <item>28</item>
+        <item>20</item>
+        <item>56</item>
+        <item>40</item>
+        <item>31</item>
+        <item>50</item>
+        <item>40</item>
+        <item>46</item>
+        <item>42</item>
+        <item>29</item>
+        <item>19</item>
+        <item>36</item>
+        <item>25</item>
+        <item>22</item>
+        <item>17</item>
+        <item>19</item>
+        <item>26</item>
+        <item>30</item>
+        <item>20</item>
+        <item>15</item>
+        <item>21</item>
+        <item>11</item>
+        <item>8</item>
+        <item>8</item>
+        <item>19</item>
+        <item>5</item>
+        <item>8</item>
+        <item>8</item>
+        <item>11</item>
+        <item>11</item>
+        <item>8</item>
+        <item>3</item>
+        <item>9</item>
+        <item>5</item>
+        <item>4</item>
+        <item>7</item>
+        <item>3</item>
+        <item>6</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="one">
+        <item>بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</item>
+        <item>ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَٰلَمِينَ</item>
+        <item>ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</item>
+        <item>مَٰلِكِ يَوۡمِ ٱلدِّينِ</item>
+        <item>إِيَّاكَ نَعۡبُدُ وَإِيَّاكَ نَسۡتَعِينُ</item>
+        <item>ٱهۡدِنَا ٱلصِّرَٰطَ ٱلۡمُسۡتَقِيمَ</item>
+        <item>صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ وَلَا ٱلضَّآلِّينَ</item>
+    </string-array>
+
+
+    <string-array name="Number2">
+        <item>٠</item>
+        <item>١</item>
+        <item>٢</item>
+        <item>٣</item>
+        <item>٤</item>
+        <item>٥</item>
+        <item>٦</item>
+        <item>٧</item>
+        <item>٨</item>
+        <item>٩</item>
+        <item>١٠</item>
+        <item>١١</item>
+        <item>١٢</item>
+        <item>١٣</item>
+        <item>١٤</item>
+        <item>١٥</item>
+        <item>١٦</item>
+        <item>١٧</item>
+        <item>١٨</item>
+        <item>١٩</item>
+        <item>٢٠</item>
+        <item>٢١</item>
+        <item>٢٢</item>
+        <item>٢٣</item>
+        <item>٢٤</item>
+        <item>٢٥</item>
+        <item>٢٦</item>
+        <item>٢٧</item>
+        <item>٢٨</item>
+        <item>٢٩</item>
+        <item>٣٠</item>
+        <item>٣١</item>
+        <item>٣٢</item>
+        <item>٣٣</item>
+        <item>٣٤</item>
+        <item>٣٥</item>
+        <item>٣٦</item>
+        <item>٣٧</item>
+        <item>٣٨</item>
+        <item>٣٩</item>
+        <item>٤٠</item>
+        <item>٤١</item>
+        <item>٤٢</item>
+        <item>٤٣</item>
+        <item>٤٤</item>
+        <item>٤٥</item>
+        <item>٤٦</item>
+        <item>٤٧</item>
+        <item>٤٨</item>
+        <item>٤٩</item>
+        <item>٥٠</item>
+        <item>٥١</item>
+        <item>٥٢</item>
+        <item>٥٣</item>
+        <item>٥٤</item>
+        <item>٥٥</item>
+        <item>٥٦</item>
+        <item>٥٧</item>
+        <item>٥٨</item>
+        <item>٥٩</item>
+        <item>٦٠</item>
+        <item>٦١</item>
+        <item>٦٢</item>
+        <item>٦٣</item>
+        <item>٦٤</item>
+        <item>٦٥</item>
+        <item>٦٦</item>
+        <item>٦٧</item>
+        <item>٦٨</item>
+        <item>٦٩</item>
+        <item>٧٠</item>
+        <item>٧١</item>
+        <item>٧٢</item>
+        <item>٧٣</item>
+        <item>٧٤</item>
+        <item>٧٥</item>
+        <item>٧٦</item>
+        <item>٧٧</item>
+        <item>٧٨</item>
+        <item>٧٩</item>
+        <item>٨٠</item>
+        <item>٨١</item>
+        <item>٨٢</item>
+        <item>٨٣</item>
+        <item>٨٤</item>
+        <item>٨٥</item>
+        <item>٨٦</item>
+        <item>٨٧</item>
+        <item>٨٨</item>
+        <item>٨٩</item>
+        <item>٩٠</item>
+        <item>٩١</item>
+        <item>٩٢</item>
+        <item>٩٣</item>
+        <item>٩٤</item>
+        <item>٩٥</item>
+        <item>٩٦</item>
+        <item>٩٧</item>
+        <item>٩٨</item>
+        <item>٩٩</item>
+        <item>١٠٠</item>
+        <item>١٠١</item>
+        <item>١٠٢</item>
+        <item>١٠٣</item>
+        <item>١٠٤</item>
+        <item>١٠٥</item>
+        <item>١٠٦</item>
+        <item>١٠٧</item>
+        <item>١٠٨</item>
+        <item>١٠٩</item>
+        <item>١١٠</item>
+        <item>١١١</item>
+        <item>١١٢</item>
+        <item>١١٣</item>
+        <item>١١٤</item>
+        <item>١١٥</item>
+        <item>١١٦</item>
+        <item>١١٧</item>
+        <item>١١٨</item>
+        <item>١١٩</item>
+        <item>١٢٠</item>
+        <item>١٢١</item>
+        <item>١٢٢</item>
+        <item>١٢٣</item>
+        <item>١٢٤</item>
+        <item>١٢٥</item>
+        <item>١٢٦</item>
+        <item>١٢٧</item>
+        <item>١٢٨</item>
+        <item>١٢٩</item>
+        <item>١٣٠</item>
+        <item>١٣١</item>
+        <item>١٣٢</item>
+        <item>١٣٣</item>
+        <item>١٣٤</item>
+        <item>١٣٥</item>
+        <item>١٣٦</item>
+        <item>١٣٧</item>
+        <item>١٣٨</item>
+        <item>١٣٩</item>
+        <item>١٤٠</item>
+        <item>١٤١</item>
+        <item>١٤٢</item>
+        <item>١٤٣</item>
+        <item>١٤٤</item>
+        <item>١٤٥</item>
+        <item>١٤٦</item>
+        <item>١٤٧</item>
+        <item>١٤٨</item>
+        <item>١٤٩</item>
+        <item>١٥٠</item>
+        <item>١٥١</item>
+        <item>١٥٢</item>
+        <item>١٥٣</item>
+        <item>١٥٤</item>
+        <item>١٥٥</item>
+        <item>١٥٦</item>
+        <item>١٥٧</item>
+        <item>١٥٨</item>
+        <item>١٥٩</item>
+        <item>١٦٠</item>
+        <item>١٦١</item>
+        <item>١٦٢</item>
+        <item>١٦٣</item>
+        <item>١٦٤</item>
+        <item>١٦٥</item>
+        <item>١٦٦</item>
+        <item>١٦٧</item>
+        <item>١٦٨</item>
+        <item>١٦٩</item>
+        <item>١٧٠</item>
+        <item>١٧١</item>
+        <item>١٧٢</item>
+        <item>١٧٣</item>
+        <item>١٧٤</item>
+        <item>١٧٥</item>
+        <item>١٧٦</item>
+        <item>١٧٧</item>
+        <item>١٧٨</item>
+        <item>١٧٩</item>
+        <item>١٨٠</item>
+        <item>١٨١</item>
+        <item>١٨٢</item>
+        <item>١٨٣</item>
+        <item>١٨٤</item>
+        <item>١٨٥</item>
+        <item>١٨٦</item>
+        <item>١٨٧</item>
+        <item>١٨٨</item>
+        <item>١٨٩</item>
+        <item>١٩٠</item>
+        <item>١٩١</item>
+        <item>١٩٢</item>
+        <item>١٩٣</item>
+        <item>١٩٤</item>
+        <item>١٩٥</item>
+        <item>١٩٦</item>
+        <item>١٩٧</item>
+        <item>١٩٨</item>
+        <item>١٩٩</item>
+        <item>٢٠٠</item>
+        <item>٢٠١</item>
+        <item>٢٠٢</item>
+        <item>٢٠٣</item>
+        <item>٢٠٤</item>
+        <item>٢٠٥</item>
+        <item>٢٠٦</item>
+        <item>٢٠٧</item>
+        <item>٢٠٨</item>
+        <item>٢٠٩</item>
+        <item>٢١٠</item>
+        <item>٢١١</item>
+        <item>٢١٢</item>
+        <item>٢١٣</item>
+        <item>٢١٤</item>
+        <item>٢١٥</item>
+        <item>٢١٦</item>
+        <item>٢١٧</item>
+        <item>٢١٨</item>
+        <item>٢١٩</item>
+        <item>٢٢٠</item>
+        <item>٢٢١</item>
+        <item>٢٢٢</item>
+        <item>٢٢٣</item>
+        <item>٢٢٤</item>
+        <item>٢٢٥</item>
+        <item>٢٢٦</item>
+        <item>٢٢٧</item>
+        <item>٢٢٨</item>
+        <item>٢٢٩</item>
+        <item>٢٣٠</item>
+        <item>٢٣١</item>
+        <item>٢٣٢</item>
+        <item>٢٣٣</item>
+        <item>٢٣٤</item>
+        <item>٢٣٥</item>
+        <item>٢٣٦</item>
+        <item>٢٣٧</item>
+        <item>٢٣٨</item>
+        <item>٢٣٩</item>
+        <item>٢٤٠</item>
+        <item>٢٤١</item>
+        <item>٢٤٢</item>
+        <item>٢٤٣</item>
+        <item>٢٤٤</item>
+        <item>٢٤٥</item>
+        <item>٢٤٦</item>
+        <item>٢٤٧</item>
+        <item>٢٤٨</item>
+        <item>٢٤٩</item>
+        <item>٢٥٠</item>
+        <item>٢٥١</item>
+        <item>٢٥٢</item>
+        <item>٢٥٣</item>
+        <item>٢٥٤</item>
+        <item>٢٥٥</item>
+        <item>٢٥٦</item>
+        <item>٢٥٧</item>
+        <item>٢٥٨</item>
+        <item>٢٥٩</item>
+        <item>٢٦٠</item>
+        <item>٢٦١</item>
+        <item>٢٦٢</item>
+        <item>٢٦٣</item>
+        <item>٢٦٤</item>
+        <item>٢٦٥</item>
+        <item>٢٦٦</item>
+        <item>٢٦٧</item>
+        <item>٢٦٨</item>
+        <item>٢٦٩</item>
+        <item>٢٧٠</item>
+        <item>٢٧١</item>
+        <item>٢٧٢</item>
+        <item>٢٧٣</item>
+        <item>٢٧٤</item>
+        <item>٢٧٥</item>
+        <item>٢٧٦</item>
+        <item>٢٧٧</item>
+        <item>٢٧٨</item>
+        <item>٢٧٩</item>
+        <item>٢٨٠</item>
+        <item>٢٨١</item>
+        <item>٢٨٢</item>
+        <item>٢٨٣</item>
+        <item>٢٨٤</item>
+        <item>٢٨٥</item>
+        <item>٢٨٦</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="azkar">الأذكار</string>
+
 </resources>
