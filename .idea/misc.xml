@@ -4,13 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/about.xml" value="0.17314814814814813" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/back.xml" value="0.1125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/book.xml" value="0.1125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/chat.xml" value="0.1125" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/copy.xml" value="0.17314814814814813" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/dialog_background.xml" value="0.17314814814814813" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/download.xml" value="0.17314814814814813" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/frame.xml" value="0.1125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.1125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/more2.xml" value="0.1125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/phone.xml" value="0.1125" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/whatsapp.xml" value="0.17314814814814813" />
-        <entry key="..\:/EL-Mufassir/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/layout/activity_main.xml" value="0.67" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/menu/home.xml" value="0.13518518518518519" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/menu/tafseer.xml" value="0.20416666666666666" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.2203125" />
+        <entry key="..\:/EL-Mufassir/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.2203125" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package com.yousef.el_mufassir;
+package com.yousef.el_mufassir.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.yousef.el_mufassir.R;
 
 public class MainActivity extends AppCompatActivity {
 
