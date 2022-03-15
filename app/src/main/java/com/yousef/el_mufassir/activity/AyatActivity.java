@@ -98,7 +98,7 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         }
         else {
             Intent intent = new Intent( this, TafseerActivity.class );
-            intent.putExtra( constants.NUMBER, numberOfSoura+1);
+            intent.putExtra( constants.NUMBER, numberOfSoura);
             intent.putExtra( constants.AYA, position);
             startActivity( intent );
         }

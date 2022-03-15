@@ -47,7 +47,7 @@ public class TafseerActivity extends AppCompatActivity {
 
         int numberOfSoura=getIntent().getExtras().getInt( constants.NUMBER );
         int numberOfAya=getIntent().getExtras().getInt( constants.AYA );
-        String nameOfSoura =repository.getName()[numberOfSoura-1];
+        String nameOfSoura =repository.getName()[numberOfSoura];
         String textTitle = getString(R.string.tafseerSoura)+" "+nameOfSoura+" "+getString(R.string.chooseAya)+" "+getNumAya(numberOfAya);
         binding.titleText.setText(textTitle);
 
