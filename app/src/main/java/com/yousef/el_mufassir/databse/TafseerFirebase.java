@@ -72,7 +72,7 @@ public class TafseerFirebase {
     }
 
 
-    public void getOpenTafseer(Context context,MySharedPreference mySharedPreference){
+    public void getOpenTafseer(Context context,MySharedPreference mySharedPreference, TafseerFunction tafseerFunction){
         Opens.get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -82,7 +82,7 @@ public class TafseerFirebase {
                             SouraOpen++;
                             if(mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,0)<open) {
                                 mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA, open);
-                                //getTafseer2(d.getKey(),open,context,TafseerSQLite.newInstance(context),new TafseerFunction(context));
+                                tafseerFunction.showNotification(context.getResources().getStringArray(R.array.Quran)[SouraOpen-1],SouraOpen+"",open+"");
                             }
                         }
                         mySharedPreference.saveInt(constants.NUM_OF_OPEN_SOURA, SouraOpen);

@@ -63,6 +63,6 @@ public class Repository {
         tafseerFirebase.blockUser(tafseerFunction.getMacAddress(),mySharedPreference);
     }
     public void getOpenTafseer(){
-        tafseerFirebase.getOpenTafseer(context,mySharedPreference);
+        tafseerFirebase.getOpenTafseer(context,mySharedPreference,tafseerFunction);
     }
 }

@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
     private Constants constants;
     private  SouraAdapter souraAdapter;
     private GridLayoutManager gridLayoutManager;
+    private int numOfOpenSoura;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         repository=new Repository(getContext());
         constants=Constants.newInstance();
 
-        int numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,0);
+        numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,0);
 
         souraAdapter = new SouraAdapter(  repository.getName(), repository.getAyat(), numOfOpenSoura, this );
         gridLayoutManager = new GridLayoutManager( getContext(), 2 );
@@ -55,7 +56,6 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //setAlert();
         RecyclerView recyclerViewSoura = view.findViewById(R.id.recyclerViewSoura);
         recyclerViewSoura.setLayoutManager(gridLayoutManager);
         recyclerViewSoura.setAdapter(souraAdapter);
@@ -64,8 +64,7 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
 
     @Override
     public void onClickItem(int visible, int position) {
-        int p=position+1;
-        int numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA+p ,0);
+        int numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,0);
         Toast.makeText(getContext(),numOfOpenAya+"",Toast.LENGTH_LONG).show();
         if(visible==View.VISIBLE){
             TastyToast.makeText( getContext(), getString(R.string.noOpenSoura)+" "+repository.getName()[position],TastyToast.LENGTH_LONG,TastyToast.ERROR ).show();
@@ -73,9 +72,11 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         else {
             Intent intent = new Intent(getContext(), AyatActivity.class);
             intent.putExtra(constants.NUMBER, position);
-            intent.putExtra(constants.LOCK, numOfOpenAya);
+            if( numOfOpenSoura == (position+1) )
+                intent.putExtra(constants.LOCK, numOfOpenAya);
+            else
+                intent.putExtra(constants.LOCK, Integer.parseInt( getResources().getStringArray(R.array.Numbers)[position]));
             startActivity(intent);
-
         }
     }
 }

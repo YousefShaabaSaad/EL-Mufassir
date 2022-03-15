@@ -90,7 +90,7 @@ public class TafseerFunction {
     }
 
 
-    public void showNotification(String name,String soura,String aya, String status){
+    public void showNotification(String name,String soura,String aya){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(constants.CHANNEL_ID, constants.CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.setDescription(context.getString(R.string.appName2));
@@ -105,10 +105,7 @@ public class TafseerFunction {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, constants.CHANNEL_ID);
         mBuilder.setSmallIcon(R.mipmap.ic_logo_round);
         mBuilder.setContentTitle(context.getString(R.string.soura)+name);
-        if(status.equals(constants.NEW))
-            mBuilder.setContentText(context.getString(R.string.canRead)+" "+aya+" "+context.getString(R.string.fromSoura)+" "+name );
-        else if(status.equals(constants.EDIT))
-            mBuilder.setContentText(context.getString(R.string.editAya)+" "+aya+" "+context.getString(R.string.fromSoura)+" "+name );
+        mBuilder.setContentText(context.getString(R.string.canRead)+" "+aya+" "+context.getString(R.string.fromSoura)+" "+name );
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setDefaults(NotificationCompat.DEFAULT_SOUND);
         mBuilder.setAutoCancel( true );
