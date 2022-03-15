@@ -80,9 +80,10 @@ public class TafseerFirebase {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             int open = document.toObject(Integer.class);
                             SouraOpen++;
-                            mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA + document.toString(), open);
-                            //getTafseer2(d.getKey(),open,context,TafseerSQLite.newInstance(context),new TafseerFunction(context));
-
+                            if(mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,0)<open) {
+                                mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA, open);
+                                //getTafseer2(d.getKey(),open,context,TafseerSQLite.newInstance(context),new TafseerFunction(context));
+                            }
                         }
                         mySharedPreference.saveInt(constants.NUM_OF_OPEN_SOURA, SouraOpen);
                     }
