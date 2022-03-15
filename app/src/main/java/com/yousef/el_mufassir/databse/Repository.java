@@ -1,12 +1,11 @@
 package com.yousef.el_mufassir.databse;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.LinearLayout;
+import androidx.activity.result.ActivityResultLauncher;
 import com.yousef.el_mufassir.functions.TafseerFunction;
 import com.yousef.el_mufassir.model.Tafseer;
-
-import java.util.List;
 
 
 public class Repository {
@@ -40,6 +39,9 @@ public class Repository {
     public void whatsapp() {
         tafseerFunction.whatsapp();
     }
+    public void about(LinearLayout layout, ActivityResultLauncher<String> activityResultLauncher){
+        tafseerFunction.about(layout, activityResultLauncher);
+    }
 
     public String[] getName() {
         return tafseerFunction.getName();
@@ -49,11 +51,11 @@ public class Repository {
         return tafseerFunction.getAyat();
     }
 
-    public List<String> getAzkar() {
+    public String[] getAzkar() {
         return tafseerFunction.getAzkar();
     }
 
-    public List<Integer> getCountAzkar() {
+    public int[] getCountAzkar() {
         return tafseerFunction.getCountAzkar(mySharedPreference);
     }
 

@@ -1,18 +1,13 @@
 package com.yousef.el_mufassir.activity;
 
-import android.Manifest;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -81,12 +76,7 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getItemId()==R.id.whatsapp)
             repository.whatsapp();
         else if (item.getItemId()==R.id.about){
-            BottomSheetDialog bottomSheetDialogSoura=new BottomSheetDialog( this,R.style.bottomTheme );
-            View bottom= LayoutInflater.from( this ).inflate( R.layout.bottom_about,findViewById( R.id.containerBottom ) );
-            bottomSheetDialogSoura.setContentView( bottom );
-            ImageButton callMe=bottom.findViewById( R.id.callMe );
-            callMe.setOnClickListener(v -> activityResultLauncher.launch(Manifest.permission.CALL_PHONE) );
-            bottomSheetDialogSoura.show();
+            repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -1,21 +1,15 @@
 package com.yousef.el_mufassir.activity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.adapter.AyatAdapter;
@@ -64,6 +58,7 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         );
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate( R.menu.home, menu );
         return true;
@@ -74,17 +69,7 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         if (item.getItemId()==R.id.whatsapp)
             repository.whatsapp();
         else if (item.getItemId()==R.id.about){
-            BottomSheetDialog bottomSheetDialogSoura=new BottomSheetDialog( this,R.style.bottomTheme );
-            View bottom= LayoutInflater.from( this ).inflate( R.layout.bottom_about,findViewById( R.id.containerBottom ) );
-            bottomSheetDialogSoura.setContentView( bottom );
-            ImageButton callMe=bottom.findViewById( R.id.callMe );
-            callMe.setOnClickListener(v -> {
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED)
-                    repository.callPhone();
-                else
-                    activityResultLauncher.launch(Manifest.permission.CALL_PHONE);
-            });
-            bottomSheetDialogSoura.show();
+            repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -20,7 +20,8 @@
         android:theme="@style/Theme.ELMufassir">
         <activity
             android:name=".activity.AzkarActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity"/>
         <activity
             android:name=".activity.TafseerActivity"
             android:exported="false" />
@@ -44,7 +45,7 @@
         <receiver
             android:name=".functions.MyAlarm"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>

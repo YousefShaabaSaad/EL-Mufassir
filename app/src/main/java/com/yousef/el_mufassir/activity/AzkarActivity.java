@@ -1,14 +1,15 @@
 package com.yousef.el_mufassir.activity;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.databinding.ActivityAzkarBinding;
 import com.yousef.el_mufassir.databse.Repository;
@@ -17,55 +18,75 @@ import java.util.Objects;
 
 public class AzkarActivity extends AppCompatActivity {
 
-    private int count, newCount=0;
+    private int count, newCount=0, position;
+    private Repository repository;
+    private ActivityResultLauncher<String> activityResultLauncher;
+    private ActivityAzkarBinding binding;
+    private String key;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAzkarBinding binding=ActivityAzkarBinding.inflate(getLayoutInflater());
+        binding=ActivityAzkarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Constants constants=Constants.newInstance();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getStringArray(R.array.Fragments)[1]);
 
-        Repository repository=new Repository(this);
-        int position= getIntent().getExtras().getInt(constants.NUMBER);
-        String key=constants.COUNT+position;
+        Constants constants=Constants.newInstance();
+        repository=new Repository(this);
+        position= getIntent().getExtras().getInt(constants.NUMBER);
+        key=constants.COUNT+position;
         count=repository.returnInt(key,0);
 
         binding.timer.setText(String.valueOf(count));
         binding.azkar.setText(getResources().getStringArray(R.array.Azkar)[position]);
 
 
-
-        binding.clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newCount=count;
-                count=0;
-                binding.timer.setText(String.valueOf(count));
-                repository.saveInt(key,count);
-
-                Snackbar snackbar=Snackbar.make(v,getString(R.string.countDelete)+" "+getResources().getStringArray(R.array.Azkar)[position],Snackbar.LENGTH_LONG);
-                snackbar.setAction("تراجع", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        count=newCount;
-                        binding.timer.setText(String.valueOf(count));
-                        repository.saveInt(key,count);
-                    }
-                });
-                snackbar.show();
-            }
+        binding.azkar.setOnClickListener(v -> {
+            count++;
+            repository.saveInt(key,count);
+            binding.timer.setText(String.valueOf(count));
         });
 
-        binding.azkar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count++;
-                repository.saveInt(key,count);
+        activityResultLauncher=registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                result -> {
+                    if (result)
+                        repository.callPhone();
+                    else
+                        TastyToast.makeText(this, getString( R.string.noPermissionCall ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
+                }
+        );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate( R.menu.azkar, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.whatsapp)
+            repository.whatsapp();
+        else if (item.getItemId()==R.id.about)
+            repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
+        else if (item.getItemId()==R.id.delete){
+            newCount=count;
+            count=0;
+            binding.timer.setText(String.valueOf(count));
+            repository.saveInt(key,count);
+
+            Snackbar snackbar=Snackbar.make(binding.azkar,getString(R.string.countDelete)+" "+getResources().getStringArray(R.array.Azkar)[position],Snackbar.LENGTH_LONG);
+            snackbar.setAction("تراجع", v1 -> {
+                count=newCount;
                 binding.timer.setText(String.valueOf(count));
-            }
-        });
+                repository.saveInt(key,count);
+            });
+            snackbar.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,5 +1,6 @@
 package com.yousef.el_mufassir.functions;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,18 +15,20 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.activity.TafseerActivity;
 import com.yousef.el_mufassir.databse.MySharedPreference;
 import com.yousef.el_mufassir.model.Constants;
 import com.yousef.el_mufassir.model.Tafseer;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class TafseerFunction {
 
@@ -50,24 +53,28 @@ public class TafseerFunction {
         context.startActivity(intent);
     }
 
+    public void about(LinearLayout layout, ActivityResultLauncher<String> activityResultLauncher){
+        BottomSheetDialog bottomSheetDialogSoura=new BottomSheetDialog( context,R.style.bottomTheme );
+        View bottom= LayoutInflater.from( context ).inflate( R.layout.bottom_about,layout );
+        bottomSheetDialogSoura.setContentView( bottom );
+        ImageButton callMe=bottom.findViewById( R.id.callMe );
+        callMe.setOnClickListener(v -> activityResultLauncher.launch(Manifest.permission.CALL_PHONE) );
+        bottomSheetDialogSoura.show();
+    }
+
     public String[] getName(){
         return context.getResources().getStringArray(R.array.Quran);
     }
 
-    public List<String> getAzkar(){
-        List<String> azkars=new ArrayList<>();
-        for(int i=0;i<20;i++){
-            azkars.add(context.getResources().getStringArray(R.array.Azkar)[i]);
-        }
-        return azkars ;
+    public String[] getAzkar(){
+        return context.getResources().getStringArray(R.array.Azkar);
     }
 
-
-    public List<Integer> getCountAzkar(MySharedPreference mySharedPreference){
-        List<Integer> counts=new ArrayList<>();
+    public int[] getCountAzkar(MySharedPreference mySharedPreference){
+        int[] counts=new int[30];
         for(int i=0;i<30;i++){
             String key=constants.COUNT+""+i;
-            counts.add(mySharedPreference.returnInt(key,0));
+            counts[i]=mySharedPreference.returnInt(key,0);
         }
         return counts ;
     }
@@ -86,7 +93,7 @@ public class TafseerFunction {
         int numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
         mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA,numberOfAya+1);
         numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
-       showNotification(getName()[numberOfSoura-1], String.valueOf(numberOfAya),numberOfSoura-1,numberOfAya);
+       showNotification(getName()[numberOfSoura-1], String.valueOf(numberOfAya),numberOfSoura,numberOfAya);
     }
 
     private void showNotification(String name,String aya,int souraNum, int ayaNum){
@@ -139,7 +146,7 @@ public class TafseerFunction {
         if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, 17);
-            calendar.set(Calendar.MINUTE, 41);
+            calendar.set(Calendar.MINUTE, 37);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
             Intent alertIntent = new Intent(context, MyAlarm.class);
