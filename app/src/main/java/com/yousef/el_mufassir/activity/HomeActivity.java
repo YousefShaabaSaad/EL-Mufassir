@@ -28,6 +28,7 @@ import com.yousef.el_mufassir.functions.MyService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -40,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityHomeBinding binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         List<Fragment> fragments=new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new AzkarFragment());
@@ -49,10 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0)
-                    binding.toolbar.setTitle(getString(R.string.appName));
-                else if(tab.getPosition()==1)
-                    binding.toolbar.setTitle(getString(R.string.azkar));
+                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getStringArray(R.array.Fragments)[tab.getPosition()]);
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
