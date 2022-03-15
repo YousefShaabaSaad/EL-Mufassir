@@ -24,13 +24,16 @@
             android:parentActivityName=".activity.HomeActivity"/>
         <activity
             android:name=".activity.TafseerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.AyatActivity"/>
         <activity
             android:name=".activity.AyatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity"/>
         <activity
             android:name=".activity.HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"

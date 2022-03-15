@@ -32,6 +32,7 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         super.onCreate( savedInstanceState );
         ActivityAyatBinding binding= ActivityAyatBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         repository=new Repository(this);
         constants=Constants.newInstance();

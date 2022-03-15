@@ -32,7 +32,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityHomeBinding binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         List<Fragment> fragments=new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new AzkarFragment());
@@ -75,9 +76,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.whatsapp)
             repository.whatsapp();
-        else if (item.getItemId()==R.id.about){
+        else if (item.getItemId()==R.id.about)
             repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
-        }
         return super.onOptionsItemSelected(item);
     }
 }
