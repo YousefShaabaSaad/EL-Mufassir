@@ -13,6 +13,7 @@ import com.yousef.el_mufassir.R;
 
 public class AzkarFragment extends Fragment {
 
+
     public AzkarFragment() {
         // Required empty public constructor
     }
