@@ -3,6 +3,7 @@ package com.yousef.el_mufassir.databse;
 import android.content.Context;
 import android.view.View;
 
+import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.functions.TafseerFunction;
 import com.yousef.el_mufassir.model.Tafseer;
 
@@ -44,6 +45,12 @@ public class Repository {
     }
     public String[] getAyat(){
         return tafseerFunction.getAyat();
+    }
+    public String[] getAzkar(){
+        return tafseerFunction.getAzkar();
+    }
+    public int[] getCount(){
+        return tafseerFunction.getCount(mySharedPreference) ;
     }
     public void getImageTafseer(View view,String name) {
         tafseerFunction.getImageTafseer(view,name);

@@ -81,6 +81,19 @@ public class TafseerFunction {
         return context.getResources().getStringArray(R.array.Quran);
     }
 
+    public String[] getAzkar(){
+        return context.getResources().getStringArray(R.array.Azkar);
+    }
+    public int[] getCount(MySharedPreference mySharedPreference){
+        int[] counts=new int[30];
+        for(int i=0;i<30;i++){
+            String key=constants.COUNT+i;
+            counts[i]=mySharedPreference.returnInt(key,0);
+        }
+        return counts ;
+    }
+
+
     public String[] getAyat(){
         String[]Ayat = new String[114];
         for (int i=0;i<114;i++){

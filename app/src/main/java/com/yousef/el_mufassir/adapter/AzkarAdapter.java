@@ -7,15 +7,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.yousef.el_mufassir.R;
+import com.yousef.el_mufassir.interfaces.RecyclerViewAzkar;
+
 import java.util.List;
 
 public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarHolder>{
 
-    private final List<String> azkars;
-    private final List<Integer> counts;
-    public AzkarAdapter(List<String> azkars, List<Integer> counts){
+    private final String[] azkars;
+    private final int[] counts;
+
+    private final RecyclerViewAzkar recyclerViewAzkar;
+    public AzkarAdapter(String[] azkars, int[] counts, RecyclerViewAzkar recyclerViewAzkar){
         this.azkars=azkars;
         this.counts=counts;
+        this.recyclerViewAzkar=recyclerViewAzkar;
     }
     @NonNull
     @Override
@@ -26,21 +31,16 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarHolder>
 
     @Override
     public void onBindViewHolder(@NonNull AzkarHolder holder, int position) {
-        String zekr=azkars.get(position);
-        int count=counts.get(position);
+        String zekr=azkars[position];
+        int count=counts[position];
         holder.azkar.setText(zekr);
         holder.count.setText(count);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        holder.itemView.setOnClickListener(v -> recyclerViewAzkar.clickItem(holder.getAdapterPosition()));
     }
 
     @Override
     public int getItemCount() {
-        return azkars.size();
+        return azkars.length;
     }
 
     static class AzkarHolder extends RecyclerView.ViewHolder{

@@ -42,8 +42,6 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
 
         souraAdapter = new SouraAdapter(  repository.getName(), repository.getAyat(), numOfOpenSoura, this );
         gridLayoutManager = new GridLayoutManager( getContext(), 2 );
-
-
     }
 
     @Override

@@ -20,7 +20,7 @@ public class Constants {
     public final String TAFSEER_TEXT="TafseerText";
     public final String TAFSEER_LOCK="lockTafseer";
     public final String NEW="New";
-    public final String EDIT="Edit";
+    public final String COUNT="Count";
     public final String BLOCK="Block";
     public final String NO="No";
     public final String YES="Yes";
