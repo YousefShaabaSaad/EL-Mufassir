@@ -18,13 +18,14 @@ import android.view.View;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.yousef.el_mufassir.R;
-import com.yousef.el_mufassir.activity.MainActivity;
 import com.yousef.el_mufassir.activity.TafseerActivity;
 import com.yousef.el_mufassir.databse.MySharedPreference;
 import com.yousef.el_mufassir.model.Constants;
 import com.yousef.el_mufassir.model.Tafseer;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class TafseerFunction {
 
@@ -53,15 +54,20 @@ public class TafseerFunction {
         return context.getResources().getStringArray(R.array.Quran);
     }
 
-    public String[] getAzkar(){
-        return context.getResources().getStringArray(R.array.Azkar);
+    public List<String> getAzkar(){
+        List<String> azkars=new ArrayList<>();
+        for(int i=0;i<20;i++){
+            azkars.add(context.getResources().getStringArray(R.array.Azkar)[i]);
+        }
+        return azkars ;
     }
 
-    public int[] getCount(MySharedPreference mySharedPreference){
-        int[] counts=new int[30];
+
+    public List<Integer> getCountAzkar(MySharedPreference mySharedPreference){
+        List<Integer> counts=new ArrayList<>();
         for(int i=0;i<30;i++){
             String key=constants.COUNT+""+i;
-            counts[i]=mySharedPreference.returnInt(key,0);
+            counts.add(mySharedPreference.returnInt(key,0));
         }
         return counts ;
     }
@@ -76,10 +82,11 @@ public class TafseerFunction {
     }
 
     public void getNewAya(MySharedPreference mySharedPreference){
-        int numberOfSoura=mySharedPreference.returnInt(constants.NUM_OF_OPEN_SOURA,0);
-        int numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,0);
+        int numberOfSoura=mySharedPreference.returnInt(constants.NUM_OF_OPEN_SOURA,2);
+        int numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
         mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA,numberOfAya+1);
-       showNotification(getName()[numberOfSoura], String.valueOf(numberOfAya),numberOfSoura,numberOfAya);
+        numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
+       showNotification(getName()[numberOfSoura-1], String.valueOf(numberOfAya),numberOfSoura-1,numberOfAya);
     }
 
     private void showNotification(String name,String aya,int souraNum, int ayaNum){
@@ -132,7 +139,7 @@ public class TafseerFunction {
         if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, 17);
-            calendar.set(Calendar.MINUTE, 23);
+            calendar.set(Calendar.MINUTE, 41);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
             Intent alertIntent = new Intent(context, MyAlarm.class);

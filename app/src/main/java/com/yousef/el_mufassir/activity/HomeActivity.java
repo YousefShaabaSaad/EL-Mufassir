@@ -59,7 +59,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         repository=new Repository(this);
-        repository.setAlert();
         activityResultLauncher=registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 result -> {

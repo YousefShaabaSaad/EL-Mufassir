@@ -8,15 +8,8 @@ public class MySharedPreference {
     private static MySharedPreference mySharedPreference;
     private final SharedPreferences sharedPreferences;
 
-    private MySharedPreference(Context context) {
+    public MySharedPreference(Context context) {
         sharedPreferences = context.getSharedPreferences("EL-Mufassir", Activity.MODE_PRIVATE);
-    }
-
-    public static MySharedPreference newInstance(Context context){
-        if(mySharedPreference==null){
-            mySharedPreference=new MySharedPreference(context);
-        }
-        return mySharedPreference;
     }
 
     public void saveString(String key,String value) {

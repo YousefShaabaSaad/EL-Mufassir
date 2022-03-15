@@ -1,9 +1,12 @@
 package com.yousef.el_mufassir.databse;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import com.yousef.el_mufassir.functions.TafseerFunction;
 import com.yousef.el_mufassir.model.Tafseer;
+
+import java.util.List;
 
 
 public class Repository {
@@ -13,7 +16,7 @@ public class Repository {
 
     public Repository(Context context) {
         tafseerFunction = new TafseerFunction(context);
-        mySharedPreference = MySharedPreference.newInstance(context);
+        mySharedPreference = new  MySharedPreference(context);
     }
 
     //MySharedPreference
@@ -23,6 +26,9 @@ public class Repository {
 
     public int returnInt(String key, int defValue) {
         return mySharedPreference.returnInt(key, defValue);
+    }
+    public void saveInt(String key,int value) {
+        mySharedPreference.saveInt(key, value);
     }
 
 
@@ -43,12 +49,12 @@ public class Repository {
         return tafseerFunction.getAyat();
     }
 
-    public String[] getAzkar() {
+    public List<String> getAzkar() {
         return tafseerFunction.getAzkar();
     }
 
-    public int[] getCount() {
-        return tafseerFunction.getCount(mySharedPreference);
+    public List<Integer> getCountAzkar() {
+        return tafseerFunction.getCountAzkar(mySharedPreference);
     }
 
     public void getImageTafseer(View view, String name) {

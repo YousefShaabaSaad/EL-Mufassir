@@ -25,6 +25,8 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
     private  SouraAdapter souraAdapter;
     private GridLayoutManager gridLayoutManager;
     private int numOfOpenSoura;
+    private int numOfOpenAya;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,9 +40,12 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         constants=Constants.newInstance();
 
         numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,2);
+        numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,60);
+
 
         souraAdapter = new SouraAdapter(  repository.getName(), repository.getAyat(), numOfOpenSoura, this );
         gridLayoutManager = new GridLayoutManager( getContext(), 2 );
+        repository.setAlert();
     }
 
     @Override
@@ -61,7 +66,6 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
 
     @Override
     public void onClickItem(int visible, int position) {
-        int numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,60);
         if(visible==View.VISIBLE){
             TastyToast.makeText( getContext(), getString(R.string.noOpenSoura)+" "+repository.getName()[position],TastyToast.LENGTH_LONG,TastyToast.ERROR ).show();
         }
