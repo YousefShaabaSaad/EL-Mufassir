@@ -1,14 +1,12 @@
 package com.yousef.el_mufassir.activity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -24,8 +22,6 @@ import com.yousef.el_mufassir.databinding.ActivityHomeBinding;
 import com.yousef.el_mufassir.databse.Repository;
 import com.yousef.el_mufassir.fragments.AzkarFragment;
 import com.yousef.el_mufassir.fragments.HomeFragment;
-import com.yousef.el_mufassir.functions.MyService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -63,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         repository=new Repository(this);
+        repository.setAlert();
         activityResultLauncher=registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 result -> {
@@ -72,9 +69,6 @@ public class HomeActivity extends AppCompatActivity {
                         TastyToast.makeText(this, getString( R.string.noPermissionCall ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
-
-        Intent intent=new Intent(this, MyService.class);
-        startService(intent);
     }
 
     @Override

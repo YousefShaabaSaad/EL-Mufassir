@@ -51,6 +51,9 @@ public class Repository {
     public void getTextTafseer(String text) {
         tafseerFunction.getTextTafseer(text);
     }
+    public void setAlert(){
+        tafseerFunction.setAlert(mySharedPreference);
+    }
 
     //TafseerFirebase
     public void saveUser(){

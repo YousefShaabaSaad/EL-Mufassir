@@ -1,5 +1,6 @@
 package com.yousef.el_mufassir.functions;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -19,8 +20,10 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.activity.MainActivity;
+import com.yousef.el_mufassir.databse.MySharedPreference;
 import com.yousef.el_mufassir.model.Constants;
 import java.net.NetworkInterface;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -136,5 +139,20 @@ public class TafseerFunction {
         final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         final android.content.ClipData clipData = android.content.ClipData.newPlainText(context.getString(R.string.appName), text);
         clipboardManager.setPrimaryClip(clipData);
+    }
+
+    public void setAlert(MySharedPreference mySharedPreference){
+        if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 19);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+            Intent alertIntent = new Intent(context, MyAlarm.class);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
+                    PendingIntent.getBroadcast(context, 0, alertIntent, 0));
+            mySharedPreference.saveInt(constants.CHECK_ALARM,1);
+        }
     }
 }

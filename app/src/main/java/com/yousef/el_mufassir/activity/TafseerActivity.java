@@ -51,9 +51,7 @@ public class TafseerActivity extends AppCompatActivity {
         String textTitle = getString(R.string.tafseerSoura)+" "+nameOfSoura+" "+getString(R.string.chooseAya)+" "+getNumAya(numberOfAya);
         binding.titleText.setText(textTitle);
 
-        String shortId=numberOfSoura+"-"+numberOfAya;
         tafseer=new Tafseer();
-        tafseer=repository.showThisTafseer(shortId);
 
         binding.itemTafseer.nameSoura.setText(nameOfSoura);
         String textAya=tafseer.getAyaText()+" "+getNumAya(numberOfAya);
@@ -87,7 +85,6 @@ public class TafseerActivity extends AppCompatActivity {
                         TastyToast.makeText(getApplicationContext(), getString( R.string.noPermission ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
-
         binding.itemTafseer.whatsapp.setOnClickListener(v -> repository.whatsapp());
     }
 
