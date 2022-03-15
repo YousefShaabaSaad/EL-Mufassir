@@ -51,6 +51,8 @@
     <string name="settings">الإعدادات</string>
     <string name="search">بحث</string>
     <string name="palestine">لا تنسوا إخوانكم في فلسطين الحبيبة</string>
+    <string name="count">العدد : </string>
+    <string name="delete">حذف</string>
 
     <string-array name="Fragments">
         <item>المُفَسِّر</item>
