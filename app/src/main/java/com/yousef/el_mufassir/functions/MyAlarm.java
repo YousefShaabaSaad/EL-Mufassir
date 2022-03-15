@@ -10,6 +10,6 @@ public class MyAlarm extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Repository repository=new Repository(context);
-        repository.getOpenTafseer();
+        repository.getNewAya();
     }
 }

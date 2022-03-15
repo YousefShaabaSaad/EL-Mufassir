@@ -14,21 +14,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
-import android.widget.Switch;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.activity.MainActivity;
+import com.yousef.el_mufassir.activity.TafseerActivity;
 import com.yousef.el_mufassir.databse.MySharedPreference;
 import com.yousef.el_mufassir.model.Constants;
-import java.net.NetworkInterface;
+import com.yousef.el_mufassir.model.Tafseer;
+
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 public class TafseerFunction {
 
@@ -38,33 +34,6 @@ public class TafseerFunction {
     public TafseerFunction(Context context){
         this.context=context;
         constants=Constants.newInstance();
-    }
-
-    public String getMacAddress() {
-        try {
-            List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
-            for (NetworkInterface nif : all) {
-                if (!nif.getName().equalsIgnoreCase("wlan0")) continue;
-
-                byte[] macBytes = nif.getHardwareAddress();
-                if (macBytes == null) {
-                    return "";
-                }
-
-                StringBuilder res1 = new StringBuilder();
-                for (byte b : macBytes) {
-                    res1.append(String.format("%02X:",b));
-                }
-
-                if (res1.length() > 0) {
-                    res1.deleteCharAt(res1.length() - 1);
-                }
-                return res1.toString();
-            }
-        } catch (Exception ex) {
-            Log.d("MAC",ex.getMessage());
-        }
-        return "02:00:00:00:00:00";
     }
 
     public void callPhone() {
@@ -106,18 +75,23 @@ public class TafseerFunction {
         return Ayat;
     }
 
+    public void getNewAya(MySharedPreference mySharedPreference){
+        int numberOfSoura=mySharedPreference.returnInt(constants.NUM_OF_OPEN_SOURA,0);
+        int numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,0);
+        mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA,numberOfAya+1);
+       showNotification(getName()[numberOfSoura], String.valueOf(numberOfAya),numberOfSoura,numberOfAya);
+    }
 
-    public void showNotification(String name,String soura,String aya){
+    private void showNotification(String name,String aya,int souraNum, int ayaNum){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(constants.CHANNEL_ID, constants.CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.setDescription(context.getString(R.string.appName2));
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(notificationChannel);
         }
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(constants.NUMBER,1);
-        intent.putExtra(constants.NAME,"name");
-        intent.putExtra(constants.AYA,1);
+        Intent intent = new Intent(context, TafseerActivity.class);
+        intent.putExtra(constants.NUMBER,souraNum);
+        intent.putExtra(constants.AYA,ayaNum);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, constants.CHANNEL_ID);
         mBuilder.setSmallIcon(R.mipmap.ic_logo_round);
@@ -127,8 +101,7 @@ public class TafseerFunction {
         mBuilder.setDefaults(NotificationCompat.DEFAULT_SOUND);
         mBuilder.setAutoCancel( true );
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-        String id=soura+aya;
-        notificationManagerCompat.notify(Integer.parseInt(id), mBuilder.build());
+        notificationManagerCompat.notify(1, mBuilder.build());
     }
 
     public Bitmap getBitmapFromView(View view) {
@@ -158,30 +131,30 @@ public class TafseerFunction {
     public void setAlert(MySharedPreference mySharedPreference){
         if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 19);
-            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, 17);
+            calendar.set(Calendar.MINUTE, 23);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
             Intent alertIntent = new Intent(context, MyAlarm.class);
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
                     PendingIntent.getBroadcast(context, 0, alertIntent, 0));
             mySharedPreference.saveInt(constants.CHECK_ALARM,1);
         }
     }
 
-    public String[] getAyaAndTafseer(int soura, int aya){
-        String ayaAndTafseer[]=new String[2];
+    public Tafseer getAyaAndTafseer(int soura, int aya){
+        Tafseer tafseer=new Tafseer();
         switch (soura){
-            case 1:
-                ayaAndTafseer[0]=context.getResources().getStringArray(R.array.one)[aya];
-                ayaAndTafseer[1]=context.getResources().getStringArray(R.array.oneTafseer)[aya];
+            case 0:
+                tafseer.setAyaText( context.getResources().getStringArray(R.array.one)[aya]);
+                tafseer.setTafseerText( context.getResources().getStringArray(R.array.oneTafseer)[aya]);
                 break;
-            case 2:
-                ayaAndTafseer[0]=context.getResources().getStringArray(R.array.two)[aya];
-                ayaAndTafseer[1]=context.getResources().getStringArray(R.array.twoTafseer)[aya];
+            case 1:
+                tafseer.setAyaText( context.getResources().getStringArray(R.array.two)[aya] );
+                tafseer.setTafseerText( context.getResources().getStringArray(R.array.twoTafseer)[aya] ) ;
                 break;
         }
-        return ayaAndTafseer;
+        return tafseer;
     }
 }

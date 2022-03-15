@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.activity.AyatActivity;
@@ -38,7 +37,7 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         repository=new Repository(getContext());
         constants=Constants.newInstance();
 
-        numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,0);
+        numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,2);
 
         souraAdapter = new SouraAdapter(  repository.getName(), repository.getAyat(), numOfOpenSoura, this );
         gridLayoutManager = new GridLayoutManager( getContext(), 2 );
@@ -62,8 +61,7 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
 
     @Override
     public void onClickItem(int visible, int position) {
-        int numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,0);
-        Toast.makeText(getContext(),numOfOpenAya+"",Toast.LENGTH_LONG).show();
+        int numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,60);
         if(visible==View.VISIBLE){
             TastyToast.makeText( getContext(), getString(R.string.noOpenSoura)+" "+repository.getName()[position],TastyToast.LENGTH_LONG,TastyToast.ERROR ).show();
         }

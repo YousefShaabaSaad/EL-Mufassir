@@ -54,9 +54,10 @@ public class TafseerActivity extends AppCompatActivity {
         tafseer=new Tafseer();
 
         binding.nameSoura.setText(nameOfSoura);
-        String textAya=repository.getAyaAndTafseer(numberOfSoura,numberOfAya)[0]+" "+getNumAya(numberOfAya);
+        tafseer=repository.getAyaAndTafseer(numberOfSoura,numberOfAya-1);
+        String textAya=tafseer.getAyaText()+" "+getNumAya(numberOfAya);
         binding.ayaText.setText(textAya);
-        binding.tafseerText.setText(repository.getAyaAndTafseer(numberOfSoura,numberOfAya)[1]);
+        binding.tafseerText.setText(tafseer.getTafseerText());
 
         fileNameAya=getString(R.string.soura)+" "+nameOfSoura+" "+getString(R.string.aya)+" "+getNumAya(numberOfAya);
         fileNameTafseer=getString(R.string.tafseerSoura)+" "+nameOfSoura+" "+getString(R.string.aya)+" "+getNumAya(numberOfAya);

@@ -41,15 +41,10 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".functions.MyService"
-            android:enabled="true"
-            android:exported="false" />
-
         <receiver
             android:name=".functions.MyAlarm"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>

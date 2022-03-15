@@ -1,15 +1,7 @@
 package com.yousef.el_mufassir.model;
 
 public class Tafseer {
-    String idTafseer, AyaText, TafseerText;
-
-    public String getIdTafseer() {
-        return idTafseer;
-    }
-
-    public void setIdTafseer(String idTafseer) {
-        this.idTafseer = idTafseer;
-    }
+    String  AyaText, TafseerText;
 
     public String getAyaText() {
         return AyaText;
