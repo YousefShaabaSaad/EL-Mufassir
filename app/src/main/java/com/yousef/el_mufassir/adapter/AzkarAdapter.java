@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.yousef.el_mufassir.R;
 import com.yousef.el_mufassir.interfaces.RecyclerViewAzkar;
 
-import java.util.List;
 
 public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarHolder>{
 
@@ -32,9 +31,9 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarHolder>
     @Override
     public void onBindViewHolder(@NonNull AzkarHolder holder, int position) {
         String zekr=azkars[position];
-        int count=counts[position];
+        int c=counts[position];
         holder.azkar.setText(zekr);
-        holder.count.setText(count);
+        holder.count.setText(String.valueOf(c));
         holder.itemView.setOnClickListener(v -> recyclerViewAzkar.clickItem(holder.getAdapterPosition()));
     }
 
@@ -45,7 +44,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.AzkarHolder>
 
     static class AzkarHolder extends RecyclerView.ViewHolder{
         TextView count, azkar;
-        public AzkarHolder(@NonNull View itemView) {
+        AzkarHolder(@NonNull View itemView) {
             super(itemView);
             count= itemView.findViewById(R.id.timer);
             azkar= itemView.findViewById(R.id.azkar);

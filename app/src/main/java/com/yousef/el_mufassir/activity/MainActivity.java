@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView( binding.getRoot() );
 
         Repository repository=new Repository(this);
-        repository.saveUser();
-        repository.blockUser();
 
         Constants constants=Constants.newInstance();
 

@@ -17,6 +17,9 @@ import com.yousef.el_mufassir.functions.TafseerFunction;
 import com.yousef.el_mufassir.model.Constants;
 import com.yousef.el_mufassir.model.Tafseer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TafseerFirebase {
 
     private final Constants constants;
@@ -29,46 +32,6 @@ public class TafseerFirebase {
         Users = firebaseFirestore.collection(constants.NEW_USERS);
         BlockUsers = firebaseFirestore.collection(constants.BLOCK_USER);
         Opens = firebaseFirestore.collection(constants.OPEN);
-    }
-
-
-    //MainActivity
-    boolean Check=false;
-    public void saveUser(String MACAddress){
-        Users.get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            if (MACAddress.equals(document.toString())) {
-                                Check = true;
-                                return;
-                            }
-                        }
-                        if (!Check)
-                            Users.add(MACAddress);
-                    }
-                });
-    }
-
-
-    private boolean Check1=false;
-
-    public void blockUser(String MACAddress, MySharedPreference mySharedPreference) {
-        BlockUsers.get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            if (MACAddress.equals(document.toString())) {
-                                Check = true;
-                                return;
-                            }
-                        }
-                        if(Check1)
-                            mySharedPreference.saveString(constants.BLOCK, constants.YES);
-                        else
-                            mySharedPreference.saveString(constants.BLOCK, constants.NO);
-                    }
-                });
     }
 
 

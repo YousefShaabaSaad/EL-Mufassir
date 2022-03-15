@@ -50,8 +50,7 @@ public class SouraAdapter extends RecyclerView.Adapter<SouraAdapter.SouraHolder>
         else
             holder.lockSoura.setVisibility( View.VISIBLE );
 
-
-        holder.itemView.setOnClickListener(v -> recyclerViewListener.onClickItem(holder.lockSoura.getVisibility(),position+1));
+        holder.itemView.setOnClickListener(v -> recyclerViewListener.onClickItem(holder.lockSoura.getVisibility(),position));
     }
 
     static class SouraHolder extends RecyclerView.ViewHolder {

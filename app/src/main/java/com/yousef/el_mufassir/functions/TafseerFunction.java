@@ -16,6 +16,8 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.yousef.el_mufassir.R;
@@ -26,6 +28,7 @@ import java.net.NetworkInterface;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class TafseerFunction {
 
@@ -84,10 +87,11 @@ public class TafseerFunction {
     public String[] getAzkar(){
         return context.getResources().getStringArray(R.array.Azkar);
     }
+
     public int[] getCount(MySharedPreference mySharedPreference){
         int[] counts=new int[30];
         for(int i=0;i<30;i++){
-            String key=constants.COUNT+i;
+            String key=constants.COUNT+""+i;
             counts[i]=mySharedPreference.returnInt(key,0);
         }
         return counts ;
@@ -164,5 +168,20 @@ public class TafseerFunction {
                     PendingIntent.getBroadcast(context, 0, alertIntent, 0));
             mySharedPreference.saveInt(constants.CHECK_ALARM,1);
         }
+    }
+
+    public String[] getAyaAndTafseer(int soura, int aya){
+        String ayaAndTafseer[]=new String[2];
+        switch (soura){
+            case 1:
+                ayaAndTafseer[0]=context.getResources().getStringArray(R.array.one)[aya];
+                ayaAndTafseer[1]=context.getResources().getStringArray(R.array.oneTafseer)[aya];
+                break;
+            case 2:
+                ayaAndTafseer[0]=context.getResources().getStringArray(R.array.two)[aya];
+                ayaAndTafseer[1]=context.getResources().getStringArray(R.array.twoTafseer)[aya];
+                break;
+        }
+        return ayaAndTafseer;
     }
 }

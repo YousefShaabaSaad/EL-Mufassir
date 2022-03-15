@@ -18,6 +18,8 @@ import com.yousef.el_mufassir.databse.Repository;
 import com.yousef.el_mufassir.model.Constants;
 import com.yousef.el_mufassir.model.Tafseer;
 
+import java.util.Objects;
+
 public class TafseerActivity extends AppCompatActivity {
 
     private Repository repository;
@@ -33,9 +35,7 @@ public class TafseerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityTafseerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbar);
-        binding.toolbar.setNavigationIcon(R.drawable.back);
-        binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
+
 
         NotificationManager notificationManager;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -49,14 +49,14 @@ public class TafseerActivity extends AppCompatActivity {
         int numberOfAya=getIntent().getExtras().getInt( constants.AYA );
         String nameOfSoura =repository.getName()[numberOfSoura];
         String textTitle = getString(R.string.tafseerSoura)+" "+nameOfSoura+" "+getString(R.string.chooseAya)+" "+getNumAya(numberOfAya);
-        binding.titleText.setText(textTitle);
+       Objects.requireNonNull(getSupportActionBar()).setTitle(textTitle);
 
         tafseer=new Tafseer();
 
-        binding.itemTafseer.nameSoura.setText(nameOfSoura);
-        String textAya=tafseer.getAyaText()+" "+getNumAya(numberOfAya);
-        binding.itemTafseer.ayaText.setText(textAya);
-        binding.itemTafseer.tafseerText.setText(tafseer.getTafseerText());
+        binding.nameSoura.setText(nameOfSoura);
+        String textAya=repository.getAyaAndTafseer(numberOfSoura,numberOfAya)[0]+" "+getNumAya(numberOfAya);
+        binding.ayaText.setText(textAya);
+        binding.tafseerText.setText(repository.getAyaAndTafseer(numberOfSoura,numberOfAya)[1]);
 
         fileNameAya=getString(R.string.soura)+" "+nameOfSoura+" "+getString(R.string.aya)+" "+getNumAya(numberOfAya);
         fileNameTafseer=getString(R.string.tafseerSoura)+" "+nameOfSoura+" "+getString(R.string.aya)+" "+getNumAya(numberOfAya);
@@ -66,7 +66,7 @@ public class TafseerActivity extends AppCompatActivity {
                 new ActivityResultContracts.RequestPermission(),
                 result -> {
                     if (result){
-                        repository.getImageTafseer(binding.itemTafseer.layoutView, fileNameAya);
+                        repository.getImageTafseer(binding.layoutView, fileNameAya);
                         TastyToast.makeText(this,getString(R.string.successDownload),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
                     }
                     else
@@ -78,14 +78,14 @@ public class TafseerActivity extends AppCompatActivity {
                 new ActivityResultContracts.RequestPermission(),
                 result -> {
                     if (result){
-                        repository.getImageTafseer(binding.itemTafseer.layoutView2, fileNameTafseer);
+                        repository.getImageTafseer(binding.layoutView2, fileNameTafseer);
                         TastyToast.makeText(this,getString(R.string.successDownload),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
                     }
                     else
                         TastyToast.makeText(getApplicationContext(), getString( R.string.noPermission ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
-        binding.itemTafseer.whatsapp.setOnClickListener(v -> repository.whatsapp());
+        binding.whatsapp.setOnClickListener(v -> repository.whatsapp());
     }
 
     @Override

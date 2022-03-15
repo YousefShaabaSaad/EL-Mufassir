@@ -62,13 +62,10 @@ public class Repository {
         tafseerFunction.setAlert(mySharedPreference);
     }
 
-    //TafseerFirebase
-    public void saveUser(){
-        tafseerFirebase.saveUser( tafseerFunction.getMacAddress() );
+    public String[] getAyaAndTafseer(int soura, int aya){
+        return tafseerFunction.getAyaAndTafseer(soura, aya);
     }
-    public void blockUser(){
-        tafseerFirebase.blockUser(tafseerFunction.getMacAddress(),mySharedPreference);
-    }
+
     public void getOpenTafseer(){
         tafseerFirebase.getOpenTafseer(context,mySharedPreference,tafseerFunction);
     }

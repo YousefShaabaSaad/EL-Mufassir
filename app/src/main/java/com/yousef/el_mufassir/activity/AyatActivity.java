@@ -24,6 +24,8 @@ import com.yousef.el_mufassir.databse.Repository;
 import com.yousef.el_mufassir.interfaces.RecyclerViewListener;
 import com.yousef.el_mufassir.model.Constants;
 
+import java.util.Objects;
+
 public class AyatActivity extends AppCompatActivity implements RecyclerViewListener {
 
     private int numberOfSoura;
@@ -36,16 +38,13 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         super.onCreate( savedInstanceState );
         ActivityAyatBinding binding= ActivityAyatBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbar);
-        binding.toolbar.setNavigationIcon(R.drawable.back);
-        binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         repository=new Repository(this);
         constants=Constants.newInstance();
 
         numberOfSoura=getIntent().getExtras().getInt( constants.NUMBER );
         int numOfOpenAya=getIntent().getExtras().getInt( constants.LOCK);
-        binding.toolbar.setTitle(getString(R.string.soura)+" "+repository.getName()[numberOfSoura]);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.soura)+" "+repository.getName()[numberOfSoura]);
 
 
 
