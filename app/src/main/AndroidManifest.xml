@@ -49,6 +49,7 @@
             android:name=".functions.MyAlarm"
             android:enabled="true"
             android:exported="false" />
+
     </application>
 
 </manifest>

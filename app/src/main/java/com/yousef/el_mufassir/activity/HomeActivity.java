@@ -17,6 +17,7 @@ import com.yousef.el_mufassir.databinding.ActivityHomeBinding;
 import com.yousef.el_mufassir.databse.Repository;
 import com.yousef.el_mufassir.fragments.AzkarFragment;
 import com.yousef.el_mufassir.fragments.HomeFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

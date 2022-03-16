@@ -104,7 +104,7 @@ public class TafseerFunction {
             notificationManager.createNotificationChannel(notificationChannel);
         }
         Intent intent = new Intent(context, TafseerActivity.class);
-        intent.putExtra(constants.NUMBER,souraNum);
+        intent.putExtra(constants.NUMBER,souraNum-1);
         intent.putExtra(constants.AYA,ayaNum);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, constants.CHANNEL_ID);
@@ -145,8 +145,8 @@ public class TafseerFunction {
     public void setAlert(MySharedPreference mySharedPreference){
         if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 19);
-            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, 23);
+            calendar.set(Calendar.MINUTE, 10);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
             Intent alertIntent = new Intent(context, MyAlarm.class);
@@ -171,4 +171,5 @@ public class TafseerFunction {
         }
         return tafseer;
     }
+
 }

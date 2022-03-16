@@ -42,7 +42,6 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         numOfOpenSoura=repository.returnInt( constants.NUM_OF_OPEN_SOURA ,2);
         numOfOpenAya=repository.returnInt( constants.NUM_OF_OPEN_AYA ,60);
 
-
         souraAdapter = new SouraAdapter(  repository.getName(), repository.getAyat(), numOfOpenSoura, this );
         gridLayoutManager = new GridLayoutManager( getContext(), 2 );
         repository.setAlert();
