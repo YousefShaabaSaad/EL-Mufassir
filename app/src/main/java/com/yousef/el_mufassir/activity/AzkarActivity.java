@@ -4,10 +4,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yousef.el_mufassir.R;
@@ -17,7 +19,6 @@ import com.yousef.el_mufassir.model.Constants;
 import java.util.Objects;
 
 public class AzkarActivity extends AppCompatActivity {
-
     private int count, newCount=0, position;
     private Repository repository;
     private ActivityResultLauncher<String> activityResultLauncher;
@@ -30,7 +31,6 @@ public class AzkarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityAzkarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getStringArray(R.array.Fragments)[1]);
 
@@ -44,10 +44,15 @@ public class AzkarActivity extends AppCompatActivity {
         binding.azkar.setText(getResources().getStringArray(R.array.Azkar)[position]);
 
 
+        MediaPlayer player = MediaPlayer.create(this, Settings.System.DEFAULT_NOTIFICATION_URI);
+
         binding.azkar.setOnClickListener(v -> {
             count++;
             repository.saveInt(key,count);
             binding.timer.setText(String.valueOf(count));
+            if(count%10==0) {
+                player.start();
+            }
         });
 
         activityResultLauncher=registerForActivityResult(
@@ -88,5 +93,12 @@ public class AzkarActivity extends AppCompatActivity {
             snackbar.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

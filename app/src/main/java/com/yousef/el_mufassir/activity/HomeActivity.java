@@ -64,6 +64,8 @@ public class HomeActivity extends AppCompatActivity {
                         TastyToast.makeText(this, getString( R.string.noPermissionCall ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
+
+        binding.floatingActionButton.setOnClickListener(v -> TastyToast.makeText(this,getString(R.string.palestine),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show());
     }
 
     @Override

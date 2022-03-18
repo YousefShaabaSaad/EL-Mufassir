@@ -9,10 +9,7 @@ public class Constants {
     public final String AYA = "Aya";
     public final String LOCK = "lock";
     public final String COUNT="Count";
-    public final String BLOCK="Block";
-    public final String NO="No";
-    public final String YES="Yes";
-    public final String DATE="Date";
+    public final String DAY="Day";
 
     public static Constants constants;
 

@@ -1,7 +1,6 @@
 package com.yousef.el_mufassir.databse;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.LinearLayout;
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,16 +19,10 @@ public class Repository {
     }
 
     //MySharedPreference
-    public String returnString(String key, String defValue) {
-        return mySharedPreference.returnString(key, defValue);
-    }
-    public void saveString(String key,String value) {
-        mySharedPreference.saveString(key, value);
-    }
-
     public int returnInt(String key, int defValue) {
         return mySharedPreference.returnInt(key, defValue);
     }
+
     public void saveInt(String key,int value) {
         mySharedPreference.saveInt(key, value);
     }
@@ -43,6 +36,7 @@ public class Repository {
     public void whatsapp() {
         tafseerFunction.whatsapp();
     }
+
     public void about(LinearLayout layout, ActivityResultLauncher<String> activityResultLauncher){
         tafseerFunction.about(layout, activityResultLauncher);
     }

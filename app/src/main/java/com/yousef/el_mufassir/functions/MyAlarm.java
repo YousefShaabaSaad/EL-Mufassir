@@ -13,10 +13,10 @@ public class MyAlarm extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Repository repository=new Repository(context);
         Constants constants=Constants.newInstance();
-        String time=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        if( !repository.returnString(constants.DATE,"Yousef").equals(time) ){
+        int day=Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        if( repository.returnInt(constants.DAY,-1) != day ){
             repository.getNewAya();
-            repository.saveString(constants.DATE,time);
+            repository.saveInt(constants.DAY,day);
         }
     }
 }
