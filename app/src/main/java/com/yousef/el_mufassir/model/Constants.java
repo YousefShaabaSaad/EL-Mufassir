@@ -12,7 +12,7 @@ public class Constants {
     public final String BLOCK="Block";
     public final String NO="No";
     public final String YES="Yes";
-    public final String CHECK_ALARM="Check Alarm";
+    public final String DATE="Date";
 
     public static Constants constants;
 

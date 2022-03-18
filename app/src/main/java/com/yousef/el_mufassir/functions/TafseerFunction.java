@@ -91,9 +91,12 @@ public class TafseerFunction {
     public void getNewAya(MySharedPreference mySharedPreference){
         int numberOfSoura=mySharedPreference.returnInt(constants.NUM_OF_OPEN_SOURA,2);
         int numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
+        if( String.valueOf(numberOfAya).equals(context.getResources().getStringArray(R.array.Numbers)[numberOfSoura-1]) ){
+            mySharedPreference.saveInt(constants.NUM_OF_OPEN_SOURA,numberOfSoura+1);
+            numberOfAya=0;
+        }
         mySharedPreference.saveInt(constants.NUM_OF_OPEN_AYA,numberOfAya+1);
-        numberOfAya=mySharedPreference.returnInt(constants.NUM_OF_OPEN_AYA,60);
-       showNotification(getName()[numberOfSoura-1], String.valueOf(numberOfAya),numberOfSoura,numberOfAya);
+        showNotification(getName()[numberOfSoura-1], String.valueOf((numberOfAya+1)),numberOfSoura,numberOfAya+1);
     }
 
     private void showNotification(String name,String aya,int souraNum, int ayaNum){
@@ -142,19 +145,16 @@ public class TafseerFunction {
         clipboardManager.setPrimaryClip(clipData);
     }
 
-    public void setAlert(MySharedPreference mySharedPreference){
-        if(mySharedPreference.returnInt(constants.CHECK_ALARM,0)==0) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 19);
-            calendar.set(Calendar.MINUTE, 0);
-            calendar.set(Calendar.SECOND, 0);
-            calendar.set(Calendar.MILLISECOND, 0);
-            Intent alertIntent = new Intent(context, MyAlarm.class);
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
-                    PendingIntent.getBroadcast(context, 0, alertIntent, 0));
-            mySharedPreference.saveInt(constants.CHECK_ALARM,1);
-        }
+    public void setAlert(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        Intent alertIntent = new Intent(context, MyAlarm.class);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(context, 0, alertIntent, 0);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     public Tafseer getAyaAndTafseer(int soura, int aya){

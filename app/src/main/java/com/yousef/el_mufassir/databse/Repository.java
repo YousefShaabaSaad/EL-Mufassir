@@ -1,6 +1,7 @@
 package com.yousef.el_mufassir.databse;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.LinearLayout;
 import androidx.activity.result.ActivityResultLauncher;
@@ -21,6 +22,9 @@ public class Repository {
     //MySharedPreference
     public String returnString(String key, String defValue) {
         return mySharedPreference.returnString(key, defValue);
+    }
+    public void saveString(String key,String value) {
+        mySharedPreference.saveString(key, value);
     }
 
     public int returnInt(String key, int defValue) {
@@ -68,7 +72,7 @@ public class Repository {
     }
 
     public void setAlert() {
-        tafseerFunction.setAlert(mySharedPreference);
+        tafseerFunction.setAlert();
     }
 
     public Tafseer getAyaAndTafseer(int soura, int aya) {
