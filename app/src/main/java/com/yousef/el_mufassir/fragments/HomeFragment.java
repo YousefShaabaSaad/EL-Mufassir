@@ -70,12 +70,12 @@ public class HomeFragment extends Fragment implements RecyclerViewListener {
         }
         else {
             Intent intent = new Intent(getContext(), AyatActivity.class);
-            intent.putExtra(constants.NUMBER, position);
-            if( numOfOpenSoura == (position+1) )
-                intent.putExtra(constants.LOCK, numOfOpenAya);
-            else
-                intent.putExtra(constants.LOCK, Integer.parseInt( getResources().getStringArray(R.array.Numbers)[position]));
             startActivity(intent);
+            repository.saveInt(constants.NUMBER,position);
+            if( numOfOpenSoura == (position+1) )
+                repository.saveInt(constants.LOCK,numOfOpenAya);
+            else
+                repository.saveInt(constants.LOCK,Integer.parseInt( getResources().getStringArray(R.array.Numbers)[position]));
         }
     }
 }

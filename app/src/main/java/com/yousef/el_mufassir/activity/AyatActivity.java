@@ -37,8 +37,8 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
         repository=new Repository(this);
         constants=Constants.newInstance();
 
-        numberOfSoura=getIntent().getExtras().getInt( constants.NUMBER );
-        int numOfOpenAya=getIntent().getExtras().getInt( constants.LOCK);
+        numberOfSoura=repository.returnInt( constants.NUMBER ,0);
+        int numOfOpenAya=repository.returnInt( constants.LOCK ,0);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.soura)+" "+repository.getName()[numberOfSoura]);
 
 
