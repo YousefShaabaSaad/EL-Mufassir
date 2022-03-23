@@ -26,13 +26,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private Repository repository;
     private ActivityResultLauncher<String> activityResultLauncher;
-
+    private int tabPosition=0;
+    private ActivityHomeBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityHomeBinding binding=ActivityHomeBinding.inflate(getLayoutInflater());
+        binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         List<Fragment> fragments=new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                tabPosition=tab.getPosition();
                 Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getStringArray(R.array.Fragments)[tab.getPosition()]);
             }
             @Override
@@ -81,5 +82,13 @@ public class HomeActivity extends AppCompatActivity {
         else if (item.getItemId()==R.id.about)
             repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(tabPosition==0)
+            super.onBackPressed();
+        else if(tabPosition==1)
+            binding.viewPager.setCurrentItem(0);
     }
 }

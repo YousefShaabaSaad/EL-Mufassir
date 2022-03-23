@@ -36,8 +36,6 @@ public class TafseerActivity extends AppCompatActivity {
         binding = ActivityTafseerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
         NotificationManager notificationManager;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             notificationManager = getSystemService( NotificationManager.class);

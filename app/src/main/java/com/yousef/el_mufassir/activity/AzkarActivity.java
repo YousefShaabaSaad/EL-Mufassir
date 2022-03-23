@@ -31,7 +31,6 @@ public class AzkarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityAzkarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getStringArray(R.array.Fragments)[1]);
 
         Constants constants=Constants.newInstance();
