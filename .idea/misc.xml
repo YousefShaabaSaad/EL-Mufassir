@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/drawable/phone.xml" value="0.2203125" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/drawable/ring.xml" value="0.2203125" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/drawable/search.xml" value="0.2203125" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/drawable/whatsapp.xml" value="0.2203125" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/activity_ayat.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/activity_azkar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/activity_tafseer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/bottom_about.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/fragment_azkar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/item_aya.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/item_azkar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/layout/item_soura.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/menu/azkar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/menu/home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/menu/tafseer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.2203125" />
+        <entry key="..\:/Apps/EL-Mufassir/EL-Mufassir/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.2203125" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable-v24/edit.xml" value="0.2203125" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/about.xml" value="0.17314814814814813" />
         <entry key="..\:/EL-Mufassir/app/src/main/res/drawable/back.xml" value="0.1125" />

@@ -3,6 +3,7 @@
     <color name="blackChange">#BDBDBD</color>
     <color name="whiteChange">#212121</color>
     <color name="green">#04503E</color>
+    <color name="noColor">#00FFFFFF</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FFFFFFFF</color>

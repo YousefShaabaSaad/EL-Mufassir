@@ -22,13 +22,14 @@
         android:id="@+id/azkar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/frame"
         android:fontFamily="@font/arabic"
         android:padding="@dimen/_10sdp"
-        android:background="@drawable/frame"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>
