@@ -27,7 +27,6 @@ public class Repository {
         mySharedPreference.saveInt(key, value);
     }
 
-
     //TafseerFunction
     public void callPhone() {
         tafseerFunction.callPhone();

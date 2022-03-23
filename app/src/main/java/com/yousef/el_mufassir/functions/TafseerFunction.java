@@ -79,7 +79,6 @@ public class TafseerFunction {
         return counts ;
     }
 
-
     public String[] getAyat(){
         String[]Ayat = new String[114];
         for (int i=0;i<114;i++){
