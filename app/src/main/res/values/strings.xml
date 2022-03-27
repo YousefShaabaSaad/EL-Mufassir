@@ -56,6 +56,7 @@
     <string name="countDelete">هل تريد حذف العداد الخاص بـ</string>
     <string name="Yes">نعم</string>
     <string name="No">gh</string>
+    <string name="mode">الوضع</string>
 
     <string-array name="Fragments">
         <item>المُفَسِّر</item>

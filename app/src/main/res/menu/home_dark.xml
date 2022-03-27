@@ -4,7 +4,7 @@
 
     <item android:id="@+id/mode"
         android:title="@string/mode"
-        android:icon="@drawable/dark_mode"
+        android:icon="@drawable/light_mode"
         app:showAsAction="always" />
 
     <item android:icon="@drawable/more2"

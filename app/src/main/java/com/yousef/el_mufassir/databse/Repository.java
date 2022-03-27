@@ -75,4 +75,8 @@ public class Repository {
     public void getNewAya(){
         tafseerFunction.getNewAya(mySharedPreference);
     }
+
+    public void getMode(){
+        tafseerFunction.getMode(mySharedPreference);
+    }
 }

@@ -60,7 +60,10 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate( R.menu.home, menu );
+        if(repository.returnInt(constants.MODE,1) == 0)
+            getMenuInflater().inflate( R.menu.home_dark, menu );
+        else if(repository.returnInt(constants.MODE,1) == 1)
+            getMenuInflater().inflate( R.menu.home, menu );
         return true;
     }
 
@@ -68,9 +71,11 @@ public class AyatActivity extends AppCompatActivity implements RecyclerViewListe
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.whatsapp)
             repository.whatsapp();
-        else if (item.getItemId()==R.id.about){
+        else if (item.getItemId()==R.id.about)
             repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
-        }
+        else if (item.getItemId()==R.id.mode)
+            repository.getMode();
+
         return super.onOptionsItemSelected(item);
     }
 

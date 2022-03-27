@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -169,6 +170,18 @@ public class TafseerFunction {
                 break;
         }
         return tafseer;
+    }
+
+    // Light mode =1 and Night Mode =0
+    public void getMode(MySharedPreference mySharedPreference){
+        if(mySharedPreference.returnInt(constants.MODE,1)==0){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            mySharedPreference.saveInt(constants.MODE,1);
+        }
+        else if(mySharedPreference.returnInt(constants.MODE,1)==1){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            mySharedPreference.saveInt(constants.MODE,0);
+        }
     }
 
 }

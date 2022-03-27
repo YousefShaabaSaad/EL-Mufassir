@@ -17,6 +17,8 @@ import com.yousef.el_mufassir.databinding.ActivityHomeBinding;
 import com.yousef.el_mufassir.databse.Repository;
 import com.yousef.el_mufassir.fragments.AzkarFragment;
 import com.yousef.el_mufassir.fragments.HomeFragment;
+import com.yousef.el_mufassir.model.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,11 +30,13 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityResultLauncher<String> activityResultLauncher;
     private int tabPosition=0;
     private ActivityHomeBinding binding;
+    Constants constants;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         List<Fragment> fragments=new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -55,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        constants=Constants.newInstance();
         repository=new Repository(this);
         activityResultLauncher=registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
@@ -65,13 +70,15 @@ public class HomeActivity extends AppCompatActivity {
                         TastyToast.makeText(this, getString( R.string.noPermissionCall ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
-
         binding.floatingActionButton.setOnClickListener(v -> TastyToast.makeText(this,getString(R.string.palestine),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate( R.menu.home, menu );
+        if(repository.returnInt(constants.MODE,1) == 0)
+            getMenuInflater().inflate( R.menu.home_dark, menu );
+        else if(repository.returnInt(constants.MODE,1) == 1)
+            getMenuInflater().inflate( R.menu.home, menu );
         return true;
     }
 
@@ -81,6 +88,9 @@ public class HomeActivity extends AppCompatActivity {
             repository.whatsapp();
         else if (item.getItemId()==R.id.about)
             repository.about(findViewById( R.id.containerBottom ),activityResultLauncher);
+        else if (item.getItemId()==R.id.mode)
+            repository.getMode();
+
         return super.onOptionsItemSelected(item);
     }
 

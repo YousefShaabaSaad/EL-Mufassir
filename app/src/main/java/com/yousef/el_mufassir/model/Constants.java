@@ -10,6 +10,7 @@ public class Constants {
     public final String LOCK = "lock";
     public final String COUNT="Count";
     public final String DAY="Day";
+    public final String MODE="Mode";
 
     public static Constants constants;
 
